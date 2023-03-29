@@ -14,3 +14,12 @@ Install-Package Microsoft.EntityFrameworkCore.Tools -v 6.0.15
 Install-Package Npgsql.EntityFrameworkCore.PostgreSQL -v 6.0.8
 
 ```
+
+Migration
+ running the following commands . make sure that Web is set as startup project. run the following commands on the project "Infrastructure"
+
+ Infrastructure
+ `````
+ Add-Migration InitialCreate -context ShopContext -OutputDir Data/Migrations
+ Update-Database -context ShopContext
+ `````
