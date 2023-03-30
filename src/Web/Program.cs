@@ -1,4 +1,6 @@
-using Infrastructure.Data;
+global using ApplicationCore.Interfaces;
+global using Infrastructure.Data;
+global using ApplicationCore.Entities;
 using Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +16,7 @@ var connectionString = builder.Configuration.GetConnectionString("AppIdentityDbC
 builder.Services.AddDbContext<AppIdentityDbContext>(options =>
     options.UseNpgsql(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(EFRepository<>)); 
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<AppIdentityDbContext>();
@@ -35,6 +38,7 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseRequestLocalization("en-US");
 
 app.UseRouting();
 
