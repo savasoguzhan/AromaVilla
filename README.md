@@ -1,13 +1,15 @@
-AromaVilla
+# AromaVilla
 
 A sample N-layered .Net Core Project Demonstrating Clean Architecture and the Generic Repository Pattern.
 
-Packages 
+## Packages 
 
+### AplicationCore
 ```
 Install-Package Ardalis.Specification -v 6.1.0
 ```
-Ingrastructure
+
+### Ingrastructure
 ```
 Install-Package Microsoft.EntityFrameworkCore -v 6.0.15
 Install-Package Microsoft.EntityFrameworkCore.Tools -v 6.0.15
@@ -17,15 +19,15 @@ Install-Package Microsoft.EntityFrameworkCore.Design -v 6.0.15
 Install-Package Ardalis.Specification.EntityFrameworkCore -v 6.1.0
 
 ```
-Web
+### Web
 ````
 Install-Package Microsoft.EntityFrameworkCore.Tools -v 6.0.15
 `````
 
-Migration
+## Migration
  running the following commands . make sure that Web is set as startup project. run the following commands on the project "Infrastructure"
 
- Infrastructure
+ ### Infrastructure
  `````
  Add-Migration InitialCreate -context ShopContext -OutputDir Data/Migrations
  Update-Database -context ShopContext
