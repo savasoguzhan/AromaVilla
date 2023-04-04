@@ -28,7 +28,7 @@
                 <div>
                     @item.Price.ToString("c2")
                 </div>
-                <button class="btn btn-sm btn-outline-primary">
+                <button class="btn btn-sm btn-outline-primary" data-add-to-basket="@item.Id">
                     <i class="fa-solid fa-cart-plus"></i>
                 </button>
             </div>
@@ -92,3 +92,15 @@
 <div class="text-center">
     Showing @pi.RangeStart - @pi.RangeEnd  of @pi.TotalItems produtcs
 </div>
+
+@section Scripts{
+    <script>
+        $("[data-add-to-basket]").click(function() {
+            let productId = $(this).data("add-to-basket");
+            let url = "@Url.Action("AddToBasket", "Basket")";
+            $.post(url, {productId}, function(data){
+                $("[data-total-items]").text(data.totalItems)
+            });
+        });
+    </script>
+}
